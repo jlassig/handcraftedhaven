@@ -1,16 +1,18 @@
 # Overview
+
 Handcrafted Haven is an innovative web application that aims to provide a platform for artisans and crafters to showcase and sell their unique handcrafted items. It serves as a virtual marketplace, connecting talented creators with potential customers who appreciate the beauty and quality of handmade products. The application focuses on fostering a sense of community, supporting local artisans, and promoting sustainable consumption.
 
 # Development Environment
-* Front-End: HTML, CSS (Tailwind CSS), JavaScript
-* Back-End: TypeScript, Node.js, Database (Postgres /  Mongo / SQLite)
-* Project Management: Azure DevOps Boards
-* Code Management: Azure DevOps Repo
-* Deployment / Cloud Platform: Vercel
+
+- Front-End: HTML, CSS (Tailwind CSS), JavaScript
+- Back-End: TypeScript, Node.js, Database (Postgres / Mongo / SQLite)
+- Project Management: Azure DevOps Boards
+- Code Management: Azure DevOps Repo
+- Deployment / Cloud Platform: Vercel
 
 # Useful Websites
-* [azure devops](https://dev.azure.com/jlassig/Handcrafted%20Haven/_settings/projectOverview)
 
+- [azure devops](https://dev.azure.com/jlassig/Handcrafted%20Haven/_settings/projectOverview)
 
 ## Table of Contents
 
@@ -58,6 +60,7 @@ The group project assignment has three main purposes that support the course's l
 ### Design
 
 - **Web Development Standards:** Pages are valid and comply with best practices in:
+
   - Performance
   - Validation
   - Accessibility: The web application should be accessible to all users, including those with disabilities. It should comply with the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA.
@@ -83,7 +86,6 @@ The group project assignment has three main purposes that support the course's l
 - **Code Management:** Azure DevOps Repo
 
 - **Deployment / Cloud Platform:** Vercel
-
 
 ## Contributors
 
