@@ -4,9 +4,9 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ title }) => {
   return (
-    <div className="hero-container">
+
       <h1 className="bg-blue text-gold font-sans text-2xl">{title}</h1>
-    </div>
+
   );
 };
 
