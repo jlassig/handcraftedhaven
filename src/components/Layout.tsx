@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div>
       <Header/>
-      <main>{children}</main>
+      <main className="bg-lightblue text-black font-sans text-2xl">{children}</main>
       <Footer/>
     </div>
   );

@@ -2,13 +2,13 @@ import React from 'react';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 
-const About: React.FC = () => {
+const Product: React.FC = () => {
   return (
     <Layout>
-      <Hero title="About Us"/>
-      <p>About page goes here.</p>
+      <Hero title="Products"/>
+      <p>Product info goes here.</p>
     </Layout>
   );
 };
 
-export default About;
+export default Product;
