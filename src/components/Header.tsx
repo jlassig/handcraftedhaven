@@ -6,7 +6,7 @@ import logo from '../public/images/logo_side.png'
 const Header: React.FC = () => {
   return (
     <>
-    <header>
+    <header className="flex items-center justify-between p-4">
       {/* logo image:  */}
       <Link href="/">
         <Image 
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
       </Link>
 
       <nav>
-        <ul>
+        <ul className="flex space-x-4">
           <li><Link href="/">Home</Link></li>
           <li><Link href="/about">About</Link></li>
           <li><Link href="/artisan">Artisans</Link></li>
