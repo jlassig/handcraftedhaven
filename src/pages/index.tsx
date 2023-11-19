@@ -14,7 +14,7 @@ const Home: React.FC = () => {
       <section className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mt-8">
 
         {/* First Card */}
-        <div className="max-w-md bg-white rounded-lg p-8 shadow-md text-center">
+        <div className="max-w-md bg-gray rounded-lg p-8 shadow-md text-center">
           <p className="text-lg text-gray-700">
             Our artisans carefully craft their products using only the finest local materials and passed-down techniques. Come and learn more about our craftsmen.
           </p>
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Second Card */}
-        <div className="max-w-md bg-white rounded-lg p-8 shadow-md text-center">
+        <div className="max-w-md bg-gray rounded-lg p-8 shadow-md text-center">
           <p className="text-lg text-gray-700">
             The products that we sell are only the finest quality items. Handcrafted using techniques passed down from generations. We have products for every taste and household.
           </p>

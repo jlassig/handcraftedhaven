@@ -18,8 +18,10 @@ module.exports = {
     colors: {
       blue: "#33658a",
       lightblue: "#86bbd8",
-      gray: "#2f4858",
+      gray: "#D6D6D6",
+      charcol: "#2f4858",
       gold: "#f6ae2d",
+      white: "#ffffff",
     },
     fontFamily: {
       sans: ["Nunito", "sans-serif"],
