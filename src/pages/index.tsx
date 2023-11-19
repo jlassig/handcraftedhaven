@@ -3,8 +3,8 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import Link from 'next/link';
 import Image from 'next/image';
-import sellers_group from '../public/sellers_group.jpg'
-import products_group from '../public/products_group.jpg'
+import sellers_group from '../public/images/sellers_group.jpg'
+import products_group from '../public/images/products_group.jpg'
 
 
 
