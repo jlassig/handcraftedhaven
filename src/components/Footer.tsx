@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
 				{/* Column 1 */}
 				<div className="flex flex-col">
 					<h2 className="text-lg font-bold mb-2">Shop</h2>
-					<Link href="/artisans" passHref><p className="cursor-pointer">Artisans</p></Link>
-					<Link href="/products" passHref><p className="cursor-pointer">Products</p></Link>
+					<Link href="/artisan" passHref><p className="cursor-pointer">Artisans</p></Link>
+					<Link href="/product" passHref><p className="cursor-pointer">Products</p></Link>
 					<Link href="/categories" passHref><p className="cursor-pointer">Categories</p></Link>
 				</div>
 
