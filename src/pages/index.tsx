@@ -52,11 +52,6 @@ const Home: React.FC = () => {
         </div>
 
       </section>
-
-      {/* Footer Section */}
-      <footer className="mt-8 p-4 bg-gray-800 text-white text-center">
-        <p>&copy; 2023 Handcrafted Haven. All rights reserved.</p>
-      </footer>
     </Layout>
   );
 };
