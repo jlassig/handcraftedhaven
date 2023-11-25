@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../public/images/logo_side.png'
+import logo from '../../public/images/logo_side.png'
 
 const Header: React.FC = () => {
   return (

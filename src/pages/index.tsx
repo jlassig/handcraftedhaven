@@ -1,34 +1,28 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
-import type { NextPage } from 'next'
-import { useCallback, useState } from 'react'
-import { trpc } from '@/utils/trpc'
-import CardHolder from '../components/CardHolder'
+import { trpc } from '@/utils/trpc';
+import CardHolder from '../components/CardHolder';
+import Footer from '../components/Footer';
 
 const Home: React.FC = () => {
-
-   const { data: productList} = trpc.findAll.useQuery();
+  const { data: productList } = trpc.findAll.useQuery();
 
   return (
     <Layout>
       <Hero title="Handcrafted Haven" />
 
-      <section className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mt-8">
-
-      {productList && <CardHolder productList ={productList}/>}
-
-
-
-        
+      <section className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mt-8">
+        {productList && <CardHolder productList={productList} />}
       </section>
+
+      <Footer />
     </Layout>
   );
 };
 
-
-
 export default Home;
+
 
 
 
