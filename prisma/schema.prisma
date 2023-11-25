@@ -26,6 +26,8 @@ model User {
   username  String
   seller    String
   admin     String
+  story     String
+
 }
 
 model ProductReview {
