@@ -6,14 +6,14 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    // Implement authentication logic using Prisma and server-side validation
-    // For simplicity, this example assumes a successful login for any input.
+    // TODO:  Authentication logic using Prisma and server-side validation
+    // This assumes a successful login for any input.
     console.log('Logging in with:', { username, password });
   };
 
   return (
     <div className="max-w-md mx-auto p-8">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
+      {/* <h2 className="text-2xl font-bold mb-4">Login</h2> */}
       <form>
         <div className="mb-4">
           <label htmlFor="username" className="block text-sm font-medium text-gray-700">
