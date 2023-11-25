@@ -1,0 +1,20 @@
+-- CreateTable
+CREATE TABLE "UserListing" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "productId" INTEGER NOT NULL,
+    "userId" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "UserOrder" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "productId" INTEGER NOT NULL,
+    "userId" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "UserCart" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "productId" INTEGER NOT NULL,
+    "userId" INTEGER NOT NULL
+);
