@@ -20,7 +20,7 @@ const CardHolder: FC<CardHolderProps> = ({ productList }) => {
 			<Card>
 			  <div className="font-bold text-lg mb-2">{title}</div>
 			  <div className="relative h-40 mb-2">
-				<Image src={imagepath} alt={title} layout="fill" objectFit="cover" />
+				<Image src={imagepath} alt={title} width={100} height={100} />
 			  </div>
 			  <div className="text-md mb-2">{description}</div>
 			  <div className="text-gray-700 text-sm">{price}</div>
