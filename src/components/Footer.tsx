@@ -2,9 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 
 const Footer: React.FC = () => {
-	return (
-		<footer className="bg-charcol text-white p-8 mt-10">
-			<div className="container mx-auto flex justify-between max-w-[800px]">
+  return (
+    <footer className="bg-charcol text-white p-8">
+      <div className="container mx-auto flex justify-between max-w-[800px]">
 				{/* Column 1 */}
 				<div className="flex flex-col">
 					<h2 className="text-lg font-bold mb-2">Shop</h2>
@@ -30,9 +30,9 @@ const Footer: React.FC = () => {
 				</div>
 			</div>
 
-			<p className="text-center p-4 mt-10">&copy; 2023 Handcrafted Haven. All rights reserved.</p>
-		</footer>
-	);
+			<p className="text-center p-4">&copy; 2023 Handcrafted Haven. All rights reserved.</p>
+    </footer>
+  );
 };
 
 export default Footer;
