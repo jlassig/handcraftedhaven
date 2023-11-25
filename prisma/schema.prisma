@@ -15,7 +15,6 @@ model Product {
   title   String
   description String
   imagepath String
-  videopath String
   price Int
   
 }
