@@ -27,6 +27,7 @@ model User {
   seller    String
   admin     String
   story     String
+  password  String
 
 }
 
