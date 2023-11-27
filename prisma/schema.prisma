@@ -16,6 +16,7 @@ model Product {
   description String
   imagepath String
   price Int
+  rating    Int  
   
 }
 
@@ -28,6 +29,7 @@ model User {
   admin     String
   story     String
   password  String
+  rating    Int  
 
 }
 
