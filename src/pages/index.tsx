@@ -15,8 +15,6 @@ const Home: React.FC = () => {
       <section className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mt-8">
         {productList && <CardHolder productList={productList} />}
       </section>
-
-      <Footer />
     </Layout>
   );
 };

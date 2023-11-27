@@ -25,18 +25,45 @@ export const serverRouter = router({
       return ctx.prisma.product.findMany();
     }
   ),
-///// find product by ID
-findProductById: publicProcedure.query(
-  (input: { productId: number }, { ctx }: { ctx: Context }) => {
-    const { productId } = input;
+  ///// find product by ID
+  findProductById: publicProcedure
+    .query(
+      (input: { productId: number }, { ctx }: { ctx: Context }) => {
+        const { productId } = input;
 
-    return ctx.prisma.product.findUnique({
-      where: {
-        id: productId,
-      },
-    });
-  }
-),
+        return ctx.prisma.product.findUnique({
+          where: {
+            id: productId,
+          },
+        });
+      }
+    ),
+
+  ////find product reviews by product ID
+ findProductReviews: publicProcedure
+  .query(
+    (input: { productId: number }, { ctx }: { ctx: Context }) => {
+      console.log('Query function input:', input);
+
+      if (!ctx) {
+        console.error('Context is undefined');
+        throw new Error('Context is undefined');
+      }
+
+      const { productId } = input;
+       console.log('Query function productId:', productId);
+
+      return ctx.prisma.productReview.findMany({
+        where: {
+          productId: productId,
+        },
+      });
+    }
+  ),
+      
+
+
+
 
 
 //   insertOne: publicProcedure
