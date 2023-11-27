@@ -1,6 +1,6 @@
 // @/src/server/router.ts
 import { initTRPC } from '@trpc/server';
-//import { z } from "zod"
+import { z } from "zod"
 
 import { Context } from "./context"
 
@@ -12,17 +12,33 @@ const publicProcedure = t.procedure;
 
 export const serverRouter = router({
 
+  /////all the users:
    findAllUsers: publicProcedure
     .query(({ ctx  }: {ctx:Context}) => {
       return ctx.prisma.user.findMany();
     }
   ),
 
+  /////all the products:
   findAllProducts: publicProcedure
     .query(({ ctx  }: {ctx:Context}) => {
       return ctx.prisma.product.findMany();
     }
   ),
+///// find product by ID
+findProductById: publicProcedure.query(
+  (input: { productId: number }, { ctx }: { ctx: Context }) => {
+    const { productId } = input;
+
+    return ctx.prisma.product.findUnique({
+      where: {
+        id: productId,
+      },
+    });
+  }
+),
+
+
 //   insertOne: publicProcedure
 //     .input(z.object({
 //         title: z.string(),

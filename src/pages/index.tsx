@@ -16,7 +16,7 @@ const Home: React.FC = () => {
         {productList && <CardHolder productList={productList} />}
       </section>
 
-
+      <Footer />
     </Layout>
   );
 };

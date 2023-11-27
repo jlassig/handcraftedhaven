@@ -5,6 +5,7 @@ import { createTRPCNext } from '@trpc/next';
 import { httpBatchLink } from '@trpc/client';
 
 
+
 function getBaseUrl() {
   if (typeof window === 'undefined') {
     return process.env.VERCEL_URL
