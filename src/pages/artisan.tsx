@@ -19,7 +19,7 @@ const Artisan: React.FC = () => {
 
       </section>
 
-      <Footer />
+
     </Layout>
   );
 };
