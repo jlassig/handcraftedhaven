@@ -6,7 +6,7 @@ import CardHolder from '../components/CardHolder';
 import Footer from '../components/Footer';
 
 const Home: React.FC = () => {
-  const { data: productList } = trpc.findAll.useQuery();
+  const { data: productList } = trpc.findAllProducts.useQuery();
 
   return (
     <Layout>

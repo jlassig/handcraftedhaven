@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import type { ServerRouter } from '@/server/prodcuctRouter'
+import type { ServerRouter } from '@/server/router'
 import { createTRPCNext } from '@trpc/next';
 import { httpBatchLink } from '@trpc/client';
 
