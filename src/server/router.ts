@@ -1,4 +1,4 @@
-// @/src/server/router.ts
+	// @/src/server/router.ts
 import { initTRPC } from '@trpc/server';
 import { z } from "zod"
 
@@ -12,136 +12,102 @@ const publicProcedure = t.procedure;
 
 export const serverRouter = router({
 
-  /////all the users:
-   findAllUsers: publicProcedure
-    .query(({ ctx  }: {ctx:Context}) => {
-      return ctx.prisma.user.findMany();
-    }
-  ),
+	/////all the users:
+	findAllUsers: publicProcedure
+		.query(({ ctx  }: {ctx:Context}) => {
+		return ctx.prisma.user.findMany();
+		}
+	),
 
-  /////all the products:
-  findAllProducts: publicProcedure
-    .query(({ ctx  }: {ctx:Context}) => {
-      return ctx.prisma.product.findMany();
-    }
-  ),
-  ///// find product by ID
-  findProductById: publicProcedure
-    .query(
-      (input: { productId: number }, { ctx }: { ctx: Context }) => {
-        const { productId } = input;
+	/////all the products:
+	findAllProducts: publicProcedure
+		.query(({ ctx  }: {ctx:Context}) => {
+		return ctx.prisma.product.findMany();
+		}
+	),
+	///// find product by ID
+	findProductById: publicProcedure
+		.query(
+		(input: { productId: number }, { ctx }: { ctx: Context }) => {
+			const { productId } = input;
 
-        return ctx.prisma.product.findUnique({
-          where: {
-            id: productId,
-          },
-        });
+			return ctx.prisma.product.findUnique({
+			where: {
+				id: productId,
+			},
+			});
+		}
+		),
+
+  ////find product reviews by product ID
+ findProductReviews: publicProcedure
+  .query(
+    (input: { productId: number }, { ctx }: { ctx: Context }) => {
+      console.log('Query function input:', input);
+
+      if (!ctx) {
+        console.error('Context is undefined');
+        throw new Error('Context is undefined');
       }
-    ),
 
-
-
-//   //find product reviews by product ID
-//  findProductReviews: publicProcedure
-//       .input(z.object({
-//         productId: z.number(),
-//       }))
-
-//   .query(({ ctx }: { ctx: Context }) => {
-//      ctx.prisma.productReview.findMany({
-//       where: {
-//         productId: 1,
-//       },
-//     }).then(console.log);
-
-//       if (!ctx) {
-//         console.error('Context is undefined');
-//         throw new Error('Context is undefined');
-//       }
-
-//       const { productId } = input;
-//        console.log('Query function productId:', productId);
-
-
-//       // Return an array of the findMany promise results
-//       return Promise.all([
-//         ctx.prisma.productReview.findFirst({
-//           where: {
-//             productId: 1,
-//           },
-//         }),
-//       ]);
-
-//         }),
-//   });
-
-
-findProductReviews: publicProcedure
-    .input(z.object({
-        productId: z.number(),
-    }))
-    
-    .query(({ input, ctx }) => {
       const { productId } = input;
+       console.log('Query function productId:', productId);
 
-      ctx.prisma.productReview.findMany({
-        where: { productId: productId } }).then(console.log);
-
-      return Promise.all([ctx.prisma.productReview.findMany({
-        where: { productId: productId },
-      }),
-    ]);
-  }),
-        
-    })
+      return ctx.prisma.productReview.findMany({
+        where: {
+          productId: productId,
+        },
+      });
+    }
+  ),
       
 
 
 
 
 
-//   insertOne: publicProcedure
-//     .input(z.object({
-//         title: z.string(),
-//         description: z.string(),
-//         imagePath: z.string(),
-//         price: z.number(),
+	//   insertOne: publicProcedure
+	//     .input(z.object({
+	//         title: z.string(),
+	//         description: z.string(),
+	//         imagePath: z.string(),
+	//         price: z.number(),
 
-//       })
-//     )
-//     .mutation(({ input, ctx }: {input: {title: string, description: string, imagePath: string, price: number}, ctx: Context}) => {
-//       return ctx.prisma.product.create({
-//         data: { title: input.title },
-//       });
-//     }
-//   ),
-//   updateOne: publicProcedure
-//     .input(z.object({
-//         id: z.number(),
-//         title: z.string(),
-//         checked: z.boolean(),
-//     }))
-//     .mutation(({ input, ctx }) => {
-//       const { id, ...rest } = input;
+	//       })
+	//     )
+	//     .mutation(({ input, ctx }: {input: {title: string, description: string, imagePath: string, price: number}, ctx: Context}) => {
+	//       return ctx.prisma.product.create({
+	//         data: { title: input.title },
+	//       });
+	//     }
+	//   ),
+	//   updateOne: publicProcedure
+	//     .input(z.object({
+	//         id: z.number(),
+	//         title: z.string(),
+	//         checked: z.boolean(),
+	//     }))
+	//     .mutation(({ input, ctx }) => {
+	//       const { id, ...rest } = input;
 
-//       return ctx.prisma.product.update({
-//         where: { id },
-//         data: { ...rest },
-//       });
-//     }
-//   ),
-//   deleteAll: publicProcedure
-//     .input(z.object({
-//         ids: z.number().array(),
-//     }))
-//     .mutation(({ input, ctx }) => {
-//       const { ids } = input;
+	//       return ctx.prisma.product.update({
+	//         where: { id },
+	//         data: { ...rest },
+	//       });
+	//     }
+	//   ),
+	//   deleteAll: publicProcedure
+	//     .input(z.object({
+	//         ids: z.number().array(),
+	//     }))
+	//     .mutation(({ input, ctx }) => {
+	//       const { ids } = input;
 
-//       return ctx.prisma.product.deleteMany({
-//         where: { id: { in: ids } },
-//       });
-//     }
-//   ),
+	//       return ctx.prisma.product.deleteMany({
+	//         where: { id: { in: ids } },
+	//       });
+	//     }
+	//   ),
 
  
 
