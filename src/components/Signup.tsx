@@ -17,7 +17,7 @@ const Signup: React.FC = () => {
 		  console.log('Signup successful');
 		  // Extra logic for successful signup
 		},
-		onError: (error) => {
+		onError: (error: any) => {
 		  console.error('Error:', error);
 		  // Handle errors
 		},

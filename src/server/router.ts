@@ -39,24 +39,27 @@ export const serverRouter = router({
 		}
 		),
 
-	////find product reviews by product ID
+
+		/////find product reviews by ID: 
 	findProductReviews: publicProcedure
-	.input(z.object({
-		productId: z.number(),
-	}))
+  .input(z.object({
+    productId: z.number(),
+  }))
+  .query(async ({ input, ctx }) => {
+    const { productId } = input;
 
-	.query(({ input, ctx }) => {
-		const { productId } = input;
+    try {
+      const reviews = await ctx.prisma.productReview.findMany({
+        where: { productId: productId },
+      });
+      // console.log(reviews); 
+      return reviews;
+    } catch (error) {
+      console.error('Error fetching product reviews:', error);
+      throw error; 
+    }
+  }),
 
-		ctx.prisma.review.findMany({
-		where: { productId: productId }}).then(console.log);
-
-		return Promise.all([ctx.prisma.review.findMany({
-			where: { productId: productId },
-		}),
-	]);
-
-	}),
 		
 	insertUser: publicProcedure
 		.input(z.object({
