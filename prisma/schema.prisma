@@ -25,13 +25,13 @@ model User {
   fName     String
   lName     String
   username  String
-  seller    String
-  admin     String
-  story     String
+  seller    String?  @default("") // Example default value for a string field
+  admin     String?  @default("") // Example default value for a string field
+  story     String?  @default("") // Example default value for a string field
   password  String
-  rating    Int  
-
+  rating    Int?     @default(0)  // Example default value for an integer field
 }
+
 
 model ProductReview {
   id        Int      @id @default(autoincrement())
