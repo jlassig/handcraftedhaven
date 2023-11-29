@@ -80,6 +80,21 @@ export const serverRouter = router({
 		}
 		),
 
+	login: publicProcedure
+		.input(z.object({
+			username: z.string(),
+			password: z.string(),
+		}))
+		
+		.query(({ input, ctx }: {input: {username: string, password: string}, ctx: Context}) => {
+			return ctx.prisma.user.findFirst({
+				where: {
+					username: input.username, password: input.password,
+				},
+			});
+		}
+		),
+
 
 
 

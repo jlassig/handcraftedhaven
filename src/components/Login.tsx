@@ -1,14 +1,33 @@
-// components/Login.tsx
+"use client"
 import React, { useState } from 'react';
+import {trpc } from '../utils/trpc';
+import useCookie from '@/utils/useCookie';
 
 const Login: React.FC = () => {
+  const [cookie, setCookie] = useCookie('user');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const loginQuery = trpc.login.useQuery({username: username, password: password});
+  if (cookie) {
+    const user = JSON.parse(cookie);
+    console.log(user);
+  }
+
+
   const handleLogin = async () => {
-    // TODO:  Authentication logic using Prisma and server-side validation
-    // This assumes a successful login for any input.
-    console.log('Logging in with:', { username, password });
+    const loggedInUser = await loginQuery.data;
+    console.log({loggedInUser});
+
+    if (loggedInUser) {
+      console.log('logged in');
+      setCookie(JSON.stringify(loggedInUser));
+      // redirect to home page
+      // window.location.href = '/';
+      // window.location.reload();
+    } else {
+        alert('Invalid username or password');
+      }
   };
 
   return (
@@ -44,7 +63,7 @@ const Login: React.FC = () => {
         <button
           type="button"
           onClick={handleLogin}
-          className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+          className="bg-blue text-white p-2 rounded-md hover:bg-blue-600"
         >
           Login
         </button>
