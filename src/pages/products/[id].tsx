@@ -21,17 +21,17 @@ const ProductPage = () => {
   const pageTitle = Array.isArray(title) ? title[0] : title;
   const imageString = Array.isArray(imagepath) ? imagepath[0]: imagepath;
 
-  console.log(id, `type of id: ${typeof id}`)
-  const productId = Number.isInteger(parseInt(id as string, 10)) ? parseInt(id as string, 10) : 0;
-  console.log(productId, `type of productId ${typeof productId}`)
+//   console.log(id, `type of id: ${typeof id}`)
+//   const productId = Number.isInteger(parseInt(id as string, 10)) ? parseInt(id as string, 10) : 0;
+//   console.log(productId, `type of productId ${typeof productId}`)
 
-const { data: reviews,error } = trpc.findProductReviews.useQuery({
-  productId: productId,
-});
+// const { data: reviews,error } = trpc.findProductReviews.useQuery({
+//   productId: productId,
+// });
 
-if (error) {
-  console.error('Error fetching reviews:', error);
-}
+// if (error) {
+//   console.error('Error fetching reviews:', error);
+// }
 
 
 
@@ -48,7 +48,7 @@ if (error) {
       {/* <img src={imageString} alt={pageTitle}></img> */}
       <p>Price: ${price}</p>
       <p>Rating: {rating} Likes</p>
-
+{/* 
 <div>
   <h2>Product Reviews</h2>
   {reviews && reviews.length > 0 ? (
@@ -65,7 +65,7 @@ if (error) {
   ) : (
     <p>No reviews available.</p>
   )}
-</div>
+</div> */}
 
 
 
