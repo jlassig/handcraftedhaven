@@ -1,4 +1,4 @@
-	// @/src/server/router.ts
+// @/src/server/router.ts
 import { initTRPC } from '@trpc/server';
 import { z } from "zod"
 
@@ -12,32 +12,32 @@ const publicProcedure = t.procedure;
 
 export const serverRouter = router({
 
-	/////all the users:
-	findAllUsers: publicProcedure
-		.query(({ ctx  }: {ctx:Context}) => {
-		return ctx.prisma.user.findMany();
-		}
-	),
+  /////all the users:
+   findAllUsers: publicProcedure
+    .query(({ ctx  }: {ctx:Context}) => {
+      return ctx.prisma.user.findMany();
+    }
+  ),
 
-	/////all the products:
-	findAllProducts: publicProcedure
-		.query(({ ctx  }: {ctx:Context}) => {
-		return ctx.prisma.product.findMany();
-		}
-	),
-	///// find product by ID
-	findProductById: publicProcedure
-		.query(
-		(input: { productId: number }, { ctx }: { ctx: Context }) => {
-			const { productId } = input;
+  /////all the products:
+  findAllProducts: publicProcedure
+    .query(({ ctx  }: {ctx:Context}) => {
+      return ctx.prisma.product.findMany();
+    }
+  ),
+  ///// find product by ID
+  findProductById: publicProcedure
+    .query(
+      (input: { productId: number }, { ctx }: { ctx: Context }) => {
+        const { productId } = input;
 
-			return ctx.prisma.product.findUnique({
-			where: {
-				id: productId,
-			},
-			});
-		}
-		),
+        return ctx.prisma.product.findUnique({
+          where: {
+            id: productId,
+          },
+        });
+      }
+    ),
 
   ////find product reviews by product ID
  findProductReviews: publicProcedure
@@ -52,6 +52,7 @@ export const serverRouter = router({
 
       const { productId } = input;
        console.log('Query function productId:', productId);
+<<<<<<< HEAD
 
       return ctx.prisma.productReview.findMany({
         where: {
@@ -62,52 +63,64 @@ export const serverRouter = router({
   ),
       
 
+=======
+
+      return ctx.prisma.productReview.findMany({
+        where: {
+          productId: productId,
+        },
+      });
+    }
+  ),
+      
+>>>>>>> parent of 2e3655c (feat: Add user signup, POST to DB)
 
 
 
 
-	//   insertOne: publicProcedure
-	//     .input(z.object({
-	//         title: z.string(),
-	//         description: z.string(),
-	//         imagePath: z.string(),
-	//         price: z.number(),
 
-	//       })
-	//     )
-	//     .mutation(({ input, ctx }: {input: {title: string, description: string, imagePath: string, price: number}, ctx: Context}) => {
-	//       return ctx.prisma.product.create({
-	//         data: { title: input.title },
-	//       });
-	//     }
-	//   ),
-	//   updateOne: publicProcedure
-	//     .input(z.object({
-	//         id: z.number(),
-	//         title: z.string(),
-	//         checked: z.boolean(),
-	//     }))
-	//     .mutation(({ input, ctx }) => {
-	//       const { id, ...rest } = input;
+//   insertOne: publicProcedure
+//     .input(z.object({
+//         title: z.string(),
+//         description: z.string(),
+//         imagePath: z.string(),
+//         price: z.number(),
 
-	//       return ctx.prisma.product.update({
-	//         where: { id },
-	//         data: { ...rest },
-	//       });
-	//     }
-	//   ),
-	//   deleteAll: publicProcedure
-	//     .input(z.object({
-	//         ids: z.number().array(),
-	//     }))
-	//     .mutation(({ input, ctx }) => {
-	//       const { ids } = input;
+//       })
+//     )
+//     .mutation(({ input, ctx }: {input: {title: string, description: string, imagePath: string, price: number}, ctx: Context}) => {
+//       return ctx.prisma.product.create({
+//         data: { title: input.title },
+//       });
+//     }
+//   ),
+//   updateOne: publicProcedure
+//     .input(z.object({
+//         id: z.number(),
+//         title: z.string(),
+//         checked: z.boolean(),
+//     }))
+//     .mutation(({ input, ctx }) => {
+//       const { id, ...rest } = input;
 
-	//       return ctx.prisma.product.deleteMany({
-	//         where: { id: { in: ids } },
-	//       });
-	//     }
-	//   ),
+//       return ctx.prisma.product.update({
+//         where: { id },
+//         data: { ...rest },
+//       });
+//     }
+//   ),
+//   deleteAll: publicProcedure
+//     .input(z.object({
+//         ids: z.number().array(),
+//     }))
+//     .mutation(({ input, ctx }) => {
+//       const { ids } = input;
+
+//       return ctx.prisma.product.deleteMany({
+//         where: { id: { in: ids } },
+//       });
+//     }
+//   ),
 
  
 
