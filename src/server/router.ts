@@ -41,25 +41,22 @@ export const serverRouter = router({
 
 	////find product reviews by product ID
 	findProductReviews: publicProcedure
-	.query(
-		(input: { productId: number }, { ctx }: { ctx: Context }) => {
-		console.log('Query function input:', input);
+	.input(z.object({
+		productId: z.number(),
+	}))
 
-		if (!ctx) {
-			console.error('Context is undefined');
-			throw new Error('Context is undefined');
-		}
-
+	.query(({ input, ctx }) => {
 		const { productId } = input;
-		console.log('Query function productId:', productId);
 
-		return ctx.prisma.productReview.findMany({
-			where: {
-			productId: productId,
-			},
-		});
-		}
-	),
+		ctx.prisma.review.findMany({
+		where: { productId: productId }}).then(console.log);
+
+		return Promise.all([ctx.prisma.review.findMany({
+			where: { productId: productId },
+		}),
+	]);
+
+	}),
 		
 	insertUser: publicProcedure
 		.input(z.object({
