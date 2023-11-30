@@ -47,6 +47,7 @@ model SellerReview {
   productId Int
   rating    Int
   rvwText   String
+  sellerId  Int
 }
 
 model UserListing {
