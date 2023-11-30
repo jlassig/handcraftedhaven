@@ -88,7 +88,6 @@ export const serverRouter = router({
   }))
   .query(({ input, ctx }: { input: { id: number }, ctx: Context }) => {
     const { id } = input;
-    console.log(`Query function - id:`, id);
     return ctx.prisma.user.findFirst({
       where: {
         id: id,

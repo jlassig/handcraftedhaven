@@ -6,55 +6,76 @@ import Image from 'next/image'
 import { trpc } from '@/utils/trpc';
 
 
- interface SellerReview {
+ interface Review {
   userId: number;
-  sellerId: number;
+  productId: number;
   rvwText: string;
-}
-
-interface User{
- fName: string;
- lName: string;
- story: string;
- rating: number;
 
 }
-
 const SellerPage = () => {
   const router = useRouter();
   const {id} = router.query;
 
 
 const sellerId = Number.isInteger(parseInt(id as string, 10))?parseInt(id as string, 10):0;
-console.log(`SellerId post parse: ${sellerId} and type: ${typeof sellerId}`)
 
   const { data: seller, error } = trpc.findSellerById.useQuery({
     id: sellerId,
-  });
+  })
+  if (error){
+   console.error('Error fetching seller: ', error)
+  }
 
-  console.log(`Seller first name ${seller.fName}`);
-
+ const sellerFullName = seller ? `${seller.fName} ${seller.lName}` : '';
     
 
-// const { data: reviews,error } = trpc.findSellerReviews.useQuery<SellerReview>({
-//   sellerId: parseInt(id,10)});
-// if (error) {
-//   console.error('Error fetching reviews:', error);
-// }
+const { data: reviews,e } = trpc.findSellerReviews.useQuery({
+  sellerId: sellerId,
+})
+if (e) {
+  console.error('Error fetching reviews:', e);
+}
 
   return (
     <Layout>
-      <Hero title="Seller" />
+      <Hero title={sellerFullName} />
       <div>
-        <h1>Seller ID: {sellerId}</h1>
         {seller && (
           <>
-            <p>Seller Name: {seller.fName} {seller.lName}</p>
+            <h1>Seller: {seller.fName} {seller.lName}</h1>
             <p>Story: {seller.story}</p>
             <p>Rating: {seller.rating} Likes</p>
 
           </>
         )}
+
+<div>
+{/* include products that the seller sells */}
+
+
+</div>
+
+
+
+
+
+        <div>
+  <h2 className="text-center">Product Reviews</h2>
+  {reviews && reviews.length > 0 ? (
+   <div>
+    <ul >
+      {reviews.map((review: Review, index: number) => (
+        <li key={index}className="border-2 border-black rounded-md p-2 m-5">
+          <p>User ID: {review.userId}</p>
+          <p>Review: {review.rvwText}</p>
+        </li>
+      ))}
+    </ul>
+    </div>
+  ) : (
+    <p className="border-2 border-black rounded-md p-2 m-5">No reviews available.</p>
+  )}
+</div>
       </div>
     </Layout>
   );
