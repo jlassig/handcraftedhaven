@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Card from './Card';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface UserHolderProps {
   userList: {
@@ -21,11 +22,13 @@ const UserHolder: FC<UserHolderProps> = ({ userList }) => {
    ////only pull back the people that are actually sellers: 
     seller === "1" ? (
       <div key={id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-4">
+        <Link href={`/sellers/${id}`} passHref>
         <Card>
           <div className="font-bold text-lg mb-2">{fName} {lName}</div>
           <p>{story}</p>
           <p>{rating} Likes</p>
         </Card>
+        </Link>
       </div>
     ) : null
 

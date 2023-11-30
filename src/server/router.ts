@@ -28,12 +28,12 @@ export const serverRouter = router({
 	///// find product by ID
 	findProductById: publicProcedure
 		.query(
-		(input: { productId: number }, { ctx }: { ctx: Context }) => {
-			const { productId } = input;
+		(input: { id: number }, { ctx }: { ctx: Context }) => {
+			const { id } = input;
 
 			return ctx.prisma.product.findUnique({
 			where: {
-				id: productId,
+				id: id,
 			},
 			});
 		}
@@ -80,6 +80,21 @@ export const serverRouter = router({
     }
   }),
 
+
+///find seller/user by their id
+		findSellerById: publicProcedure
+  .input(z.object({
+    id: z.number(),
+  }))
+  .query(({ input, ctx }: { input: { id: number }, ctx: Context }) => {
+    const { id } = input;
+    console.log(`Query function - id:`, id);
+    return ctx.prisma.user.findFirst({
+      where: {
+        id: id,
+      },
+    });
+  }),
 		
 	insertUser: publicProcedure
 		.input(z.object({
