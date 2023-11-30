@@ -60,6 +60,26 @@ export const serverRouter = router({
     }
   }),
 
+//find seller reviews by the seller's ID. 
+		findSellerReviews: publicProcedure
+  .input(z.object({
+    sellerId: z.number(),
+  }))
+  .query(async ({ input, ctx }) => {
+    const { sellerId } = input;
+
+    try {
+      const reviews = await ctx.prisma.sellerReview.findMany({
+        where: { sellerId: sellerId },
+      });
+      // console.log(reviews); 
+      return reviews;
+    } catch (error) {
+      console.error('Error fetching seller reviews:', error);
+      throw error; 
+    }
+  }),
+
 		
 	insertUser: publicProcedure
 		.input(z.object({

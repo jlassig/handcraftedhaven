@@ -5,69 +5,6 @@ import Hero from '@/components/Hero';
 import Image from 'next/image'
 import { trpc } from '@/utils/trpc';
 
-//  interface Review {
-//   userId: number;
-//   productId: number;
-//   rvwText: string;
-
-// }
-
-// const ProductPage = () => {
-//   const router = useRouter();
-//   const { id, title, description, imagepath, price, rating } = router.query;
-
-//   const pageTitle = Array.isArray(title) ? title[0] : title;
-//   const imageString = Array.isArray(imagepath) ? imagepath[0] : imagepath;
-
-//   // Parse the id to ensure it's a number
-//   const productId = Number.isInteger(parseInt(id as string, 10)) ? parseInt(id as string, 10) : 0;
-
-//   // Use 'useQuery' hook from trpc to fetch product reviews
-//   const { data: reviews, error } = trpc.findProductReviews.useQuery({
-//     input: { productId }, // Pass productId as part of the input object
-//   });
-
-//   if (error) {
-//     console.error('Error fetching reviews:', error);
-//   }
-
-//   return (
-//     <Layout>
-//       <Hero title="Product" />
-//       <div>
-//         <h1>{title}</h1>
-//         <p>Product ID: {id}</p>
-//         <p>Description: {description}</p>
-//         <Image src={imageString || ''} alt={pageTitle || ''} width={100} height={100} />
-//         <p>Price: ${price}</p>
-//         <p>Rating: {rating} Likes</p>
-
-//         <div>
-//           <h2>Product Reviews</h2>
-//           {reviews && reviews.length > 0 ? (
-//             <div className="border-black">
-//               <ul>
-//                 {reviews.map((review: Review, index: number) => (
-//                   <li key={index}>
-//                     <p>User ID: {review.userId}</p>
-//                     <p>Review: {review.rvwText}</p>
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-//           ) : (
-//             <p>No reviews available.</p>
-//           )}
-//         </div>
-
-//         <button>Add to Cart</button>
-//       </div>
-//     </Layout>
-//   );
-// };
-
-// export default ProductPage;
-
 
  interface Review {
   userId: number;
@@ -95,9 +32,6 @@ const { data: reviews,error } = trpc.findProductReviews.useQuery({
 if (error) {
   console.error('Error fetching reviews:', error);
 }
-
-
-
 
   return (
     <Layout>
