@@ -25,19 +25,6 @@ export const serverRouter = router({
 		return ctx.prisma.product.findMany();
 		}
 	),
-	///// find product by ID
-	findProductById: publicProcedure
-		.query(
-		(input: { id: number }, { ctx }: { ctx: Context }) => {
-			const { id } = input;
-
-			return ctx.prisma.product.findUnique({
-			where: {
-				id: id,
-			},
-			});
-		}
-		),
 
 
 		/////find product reviews by ID: 
@@ -94,6 +81,45 @@ export const serverRouter = router({
       },
     });
   }),
+
+		//find product by seller Id 
+		findUserListing: publicProcedure
+  .input(z.object({
+    userId: z.number(),				
+  }))
+		.query(async ({ input, ctx }) => {
+    const { userId } = input;
+
+    try {
+      const listings = await ctx.prisma.userListing.findMany({
+        where: { userId: userId },
+      });
+      // console.log(listings); 					
+
+						const productIds = listings.map((listing: { productId: any; }) => listing.productId);
+						const products = ctx.prisma.product.findMany({
+      where: {
+        id: {
+          in: productIds,
+        },
+      },
+      select: {
+								id: true,
+        title: true,
+								description: true,
+        imagepath: true,
+								price: true,
+								rating: true,
+      },
+    });
+				console.log(`Products: ${products}`)
+    return products;
+    } catch (error) {
+      console.error('Error fetching user listings:', error);
+      throw error; 
+    }
+  }),
+		
 		
 	insertUser: publicProcedure
 		.input(z.object({
