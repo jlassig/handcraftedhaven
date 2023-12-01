@@ -19,7 +19,6 @@
     "js-cookie": "^3.0.5",
     "mini-css-extract-plugin": "^2.7.6",
     "next": "14.0.3",
-    "prisma": "^5.6.0",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "^6.20.0",
@@ -34,6 +33,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
     "postcss": "^8.4.31",
+    "prisma": "^5.6.0",
     "tailwindcss": "^3.3.5",
     "typescript": "^5"
   }
