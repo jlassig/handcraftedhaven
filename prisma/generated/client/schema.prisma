@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./hhdb.db"
+}
+
+model Product {
+  id      Int      @id @default(autoincrement())
+  title   String
+  description String
+  imagepath String
+  price Int
+  rating    Int  
+  
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  fName     String
+  lName     String
+  username  String
+  seller    String?  @default("") // Example default value for a string field
+  admin     String?  @default("") // Example default value for a string field
+  story     String?  @default("") // Example default value for a string field
+  password  String
+  rating    Int?     @default(0)  // Example default value for an integer field
+}
+
+
+model ProductReview {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  productId Int
+  rating    Int
+  rvwText   String
+}
+
+model SellerReview {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  productId Int
+  rating    Int
+  rvwText   String
+  sellerId  Int
+}
+
+model UserListing {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  userId    Int
+}
+
+model UserOrder {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  userId    Int
+
+}
+
+model UserCart {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  userId    Int
+
+}
