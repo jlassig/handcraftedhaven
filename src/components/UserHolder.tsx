@@ -8,7 +8,7 @@ interface UserHolderProps {
     id: number;
     fName: string;
     lName: string;
-    story: string;
+    story: string | null;
     seller: string;
     rating: number;
   }[];
