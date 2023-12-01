@@ -36,11 +36,11 @@ const {data: userListings, error: userListingsError } = trpc.findUserListing.use
  const sellerFullName = seller ? `${seller.fName} ${seller.lName}` : '';
     
 ////get the reviews for the seller: 
-const { data: reviews,e } = trpc.findSellerReviews.useQuery({
+const { data: reviews,error: reviewError } = trpc.findSellerReviews.useQuery({
   sellerId: sellerId,
 })
-if (e) {
-  console.error('Error fetching reviews:', e);
+if (reviewError) {
+  console.error('Error fetching reviews:', reviewError);
 }
 
   return (
