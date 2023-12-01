@@ -9,8 +9,8 @@ interface UserHolderProps {
     fName: string;
     lName: string;
     story: string | null;
-    seller: string;
-    rating: number;
+    seller: string | null;
+    rating: number | null;
   }[];
 
 }
